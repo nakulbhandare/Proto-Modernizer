@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package review;
+option go_package = "proto/review";
+
+message Review {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+service ReviewService {
+  rpc GetReview(ReviewRequest) returns (Review);
+}
+
+message ReviewRequest {
+  string id = 1;
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package subscription;
+option go_package = "proto/subscription";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+message Subscription {
+  string id = 1 [(gogoproto.customname) = "SubscriptionID"];
+  string name = 2;
+  string description = 3 [(gogoproto.jsontag) = "desc,omitempty"];
+}
+
+service SubscriptionService {
+  rpc GetSubscription(SubscriptionRequest) returns (Subscription);
+}
+
+message SubscriptionRequest {
+  string id = 1;
+}

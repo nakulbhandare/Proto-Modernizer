@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package subscription;
+option go_package = "proto/subscription";
+
+message Subscription {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+service SubscriptionService {
+  rpc GetSubscription(SubscriptionRequest) returns (Subscription);
+}
+
+message SubscriptionRequest {
+  string id = 1;
+}

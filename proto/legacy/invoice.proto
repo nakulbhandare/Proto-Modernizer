@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package invoice;
+option go_package = "proto/invoice";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+message Invoice {
+  string id = 1 [(gogoproto.customname) = "InvoiceID"];
+  string name = 2;
+  string description = 3 [(gogoproto.jsontag) = "desc,omitempty"];
+}
+
+service InvoiceService {
+  rpc GetInvoice(InvoiceRequest) returns (Invoice);
+}
+
+message InvoiceRequest {
+  string id = 1;
+}

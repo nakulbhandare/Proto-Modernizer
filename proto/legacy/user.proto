@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package user;
+option go_package = "proto/user";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+message User {
+  string id = 1 [(gogoproto.customname) = "UserID"];
+  string name = 2;
+  string description = 3 [(gogoproto.jsontag) = "desc,omitempty"];
+}
+
+service UserService {
+  rpc GetUser(UserRequest) returns (User);
+}
+
+message UserRequest {
+  string id = 1;
+}

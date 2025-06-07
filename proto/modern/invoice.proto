@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package invoice;
+option go_package = "proto/invoice";
+
+message Invoice {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+service InvoiceService {
+  rpc GetInvoice(InvoiceRequest) returns (Invoice);
+}
+
+message InvoiceRequest {
+  string id = 1;
+}

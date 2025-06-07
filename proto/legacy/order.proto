@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package order;
+option go_package = "proto/order";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+message Order {
+  string id = 1 [(gogoproto.customname) = "OrderID"];
+  string name = 2;
+  string description = 3 [(gogoproto.jsontag) = "desc,omitempty"];
+}
+
+service OrderService {
+  rpc GetOrder(OrderRequest) returns (Order);
+}
+
+message OrderRequest {
+  string id = 1;
+}

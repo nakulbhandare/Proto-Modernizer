@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package notification;
+option go_package = "proto/notification";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+message Notification {
+  string id = 1 [(gogoproto.customname) = "NotificationID"];
+  string name = 2;
+  string description = 3 [(gogoproto.jsontag) = "desc,omitempty"];
+}
+
+service NotificationService {
+  rpc GetNotification(NotificationRequest) returns (Notification);
+}
+
+message NotificationRequest {
+  string id = 1;
+}

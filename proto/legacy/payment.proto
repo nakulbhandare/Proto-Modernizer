@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package payment;
+option go_package = "proto/payment";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+message Payment {
+  string id = 1 [(gogoproto.customname) = "PaymentID"];
+  string name = 2;
+  string description = 3 [(gogoproto.jsontag) = "desc,omitempty"];
+}
+
+service PaymentService {
+  rpc GetPayment(PaymentRequest) returns (Payment);
+}
+
+message PaymentRequest {
+  string id = 1;
+}

@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package notification;
+option go_package = "proto/notification";
+
+message Notification {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+service NotificationService {
+  rpc GetNotification(NotificationRequest) returns (Notification);
+}
+
+message NotificationRequest {
+  string id = 1;
+}

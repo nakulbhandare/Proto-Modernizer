@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package inventory;
+option go_package = "proto/inventory";
+
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
+message Inventory {
+  string id = 1 [(gogoproto.customname) = "InventoryID"];
+  string name = 2;
+  string description = 3 [(gogoproto.jsontag) = "desc,omitempty"];
+}
+
+service InventoryService {
+  rpc GetInventory(InventoryRequest) returns (Inventory);
+}
+
+message InventoryRequest {
+  string id = 1;
+}

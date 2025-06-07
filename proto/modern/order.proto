@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package order;
+option go_package = "proto/order";
+
+message Order {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+service OrderService {
+  rpc GetOrder(OrderRequest) returns (Order);
+}
+
+message OrderRequest {
+  string id = 1;
+}
