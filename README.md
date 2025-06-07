@@ -14,8 +14,9 @@ proto-modernizer/
 │       ├── user/
 │       ├── auth/
 │       └── ...           # Separate folders per proto package
-├── user_service/
+├── server/
 │   ├── server.go         # gRPC server implementation
+├── client/
 │   └── client.go         # gRPC client implementation
 ```
 
@@ -40,7 +41,7 @@ proto-modernizer/
 ### 1. Generate Go Code
 
 ```bash
-cd proto/modern/user
+cd proto/modern
 protoc \
   --go_out=. --go_opt=paths=source_relative \
   --go-grpc_out=. --go-grpc_opt=paths=source_relative \
@@ -50,14 +51,14 @@ protoc \
 ### 2. Start the Server
 
 ```bash
-cd user_service
+cd server
 go run server.go
 ```
 
 ### 3. Run the Client (in a separate terminal)
 
 ```bash
-cd user_service
+cd client
 go run client.go
 ```
 
